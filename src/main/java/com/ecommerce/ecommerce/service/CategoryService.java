@@ -13,8 +13,7 @@ public class CategoryService {
     @Autowired
     CategoryRepo categoryRepo;
 
-    public void createCategory(Category category)
-    {
+    public void createCategory(Category category) {
         categoryRepo.save(category);
     }
 
@@ -23,8 +22,7 @@ public class CategoryService {
         return categoryRepo.findAll();
     }
 
-    public void editCategory(int categoryId, Category updateCategory)
-    {
+    public void editCategory(int categoryId, Category updateCategory) {
         Category category = categoryRepo.getById(categoryId);
         category.setCategoryName(updateCategory.getCategoryName());
         category.setDescription(updateCategory.getDescription());
