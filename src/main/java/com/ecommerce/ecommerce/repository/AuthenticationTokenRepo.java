@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AuthenticationTokenRepo extends JpaRepository<AuthenticationToken, Integer> {
+
+    AuthenticationToken findByUser(User user);
 }

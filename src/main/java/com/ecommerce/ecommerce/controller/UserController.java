@@ -1,8 +1,9 @@
 package com.ecommerce.ecommerce.controller;
 
 
-import com.ecommerce.ecommerce.dto.ProductDTO;
-import com.ecommerce.ecommerce.dto.ResponseDTO;
+import com.ecommerce.ecommerce.dto.SignOutResponseDTO;
+import com.ecommerce.ecommerce.dto.SignInResponseDTO;
+import com.ecommerce.ecommerce.dto.user.SignInDTO;
 import com.ecommerce.ecommerce.dto.user.SignUpDTO;
 import com.ecommerce.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,13 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/signup")
-    public ResponseDTO signup(@RequestBody SignUpDTO signUpDTO){
+    public SignOutResponseDTO signup(@RequestBody SignUpDTO signUpDTO){
         return userService.signUp(signUpDTO);
+    }
+
+    @PostMapping("/signin")
+    public SignInResponseDTO signin(@RequestBody SignInDTO signInDTO){
+        return userService.signIn(signInDTO);
     }
 
 }

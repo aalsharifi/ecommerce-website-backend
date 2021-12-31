@@ -1,6 +1,7 @@
 package com.ecommerce.ecommerce.service;
 
 import com.ecommerce.ecommerce.model.AuthenticationToken;
+import com.ecommerce.ecommerce.model.User;
 import com.ecommerce.ecommerce.repository.AuthenticationTokenRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,5 +14,9 @@ public class AuthenticationTokenService {
 
     public void saveToken(AuthenticationToken authenticationToken) {
         authenticationTokenRepo.save(authenticationToken);
+    }
+
+    public AuthenticationToken getToken(User user) {
+        return authenticationTokenRepo.findByUser(user);
     }
 }

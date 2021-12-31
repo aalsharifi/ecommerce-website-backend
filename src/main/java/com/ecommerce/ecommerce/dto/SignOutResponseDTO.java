@@ -1,11 +1,11 @@
 package com.ecommerce.ecommerce.dto;
 
-public class ResponseDTO {
+public class SignOutResponseDTO {
 
     private String status;
     private String message;
 
-    public ResponseDTO(String status, String message) {
+    public SignOutResponseDTO(String status, String message) {
         this.status = status;
         this.message = message;
     }
