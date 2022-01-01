@@ -85,7 +85,7 @@ public class UserService {
         AuthenticationToken authenticationToken = authenticationTokenService.getToken(user);
 
         if(Objects.isNull(authenticationToken)){
-            throw new CustomException("Token is not present");
+            throw new CustomException("Token is not found");
         }
 
         return new SignInResponseDTO("Success", authenticationToken.getToken());
