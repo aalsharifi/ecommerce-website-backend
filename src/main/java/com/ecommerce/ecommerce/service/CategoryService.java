@@ -48,9 +48,6 @@ public class CategoryService {
         Category category = optionalCategory.get();
 
         categoryRepo.delete(category);
-
-
-
     }
 
 }
