@@ -24,6 +24,13 @@ public class Wishlist {
     @Column(name = "createdDate")
     private Date createdDate;
 
+    public Wishlist(Integer id, User user, Product product, Date createdDate) {
+        Id = id;
+        this.user = user;
+        this.product = product;
+        this.createdDate = createdDate;
+    }
+
     public Wishlist(User user, Product product) {
         this.user = user;
         this.product = product;
