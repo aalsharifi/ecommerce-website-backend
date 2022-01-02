@@ -1,6 +1,7 @@
 package com.ecommerce.ecommerce.service;
 
 import com.ecommerce.ecommerce.dto.ProductDTO;
+import com.ecommerce.ecommerce.exceptions.CustomException;
 import com.ecommerce.ecommerce.exceptions.ProductNotExistException;
 import com.ecommerce.ecommerce.model.Category;
 import com.ecommerce.ecommerce.model.Product;
@@ -84,5 +85,18 @@ public class ProductService {
         }
 
         return optionalProduct.get();
+    }
+
+    public void deleteProduct(Integer productId) {
+
+        Optional<Product> optionalProduct = productRepo.findById(productId);
+
+        if(optionalProduct.isEmpty()){
+            throw new CustomException("Invalid product id: " + productId);
+        }
+
+        Product product = optionalProduct.get();
+
+        productRepo.delete(product);
     }
 }
