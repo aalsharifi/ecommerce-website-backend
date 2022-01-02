@@ -75,4 +75,29 @@ public class CartService {
 
         cartRepo.delete(cart);
     }
+
+
+    public void updateCartItem(Integer quantity, Integer cartItemId, User user) {
+
+        Optional<Cart> optionalCart = cartRepo.findById(cartItemId);
+
+        if(optionalCart.isEmpty()){
+            throw new CustomException("Invalid cart item id: " + cartItemId);
+        }
+
+        Cart cart = optionalCart.get();
+
+        if(cart.getUser() != user){
+            throw new CustomException("Cart item does not belong to user: " + cartItemId);
+        }
+
+        if(quantity < 0){
+            throw new CustomException("Quantity " + quantity + " is less than 0");
+        }
+
+        cart.setQuantity(quantity);
+        cart.setCreatedDate(new Date());
+        cartRepo.save(cart);
+
+    }
 }
