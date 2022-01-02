@@ -6,7 +6,6 @@ import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.model.User;
 import com.ecommerce.ecommerce.model.Wishlist;
 import com.ecommerce.ecommerce.service.AuthenticationTokenService;
-import com.ecommerce.ecommerce.service.ProductService;
 import com.ecommerce.ecommerce.service.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +24,6 @@ public class WishlistController {
     @Autowired
     AuthenticationTokenService authenticationTokenService;
 
-    @Autowired
-    ProductService productService;
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addToWishlist(@RequestBody Product product, @RequestParam("Token") String token) {
