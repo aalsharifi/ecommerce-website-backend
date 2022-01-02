@@ -2,6 +2,7 @@ package com.ecommerce.ecommerce.controller;
 
 import com.ecommerce.ecommerce.common.ApiResponse;
 import com.ecommerce.ecommerce.model.Category;
+import com.ecommerce.ecommerce.model.User;
 import com.ecommerce.ecommerce.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,5 +38,14 @@ public class CategoryController {
         }
         categoryService.editCategory(categoryId, category);
         return new ResponseEntity<>(new ApiResponse(true, "Category successfully updated!"), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{categoryId}")
+    public ResponseEntity<ApiResponse> deleteCategory(@PathVariable("categoryId") Integer categoryId){
+
+        categoryService.deleteCategory(categoryId);
+
+        return new ResponseEntity<>(new ApiResponse(true, "Successfully deleted category "), HttpStatus.OK);
+
     }
 }
