@@ -57,13 +57,13 @@ public class ProductController {
         return new ResponseEntity<>(new ApiResponse(true, "Product has been updated!"), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{productId}")
-    public ResponseEntity<ApiResponse> deleteProduct(@PathVariable("productId") Integer productId){
-
-        productService.deleteProduct(productId);
-
-        return new ResponseEntity<>(new ApiResponse(true, "Successfully deleted product "), HttpStatus.OK);
-    }
+//    @DeleteMapping("/delete/{productId}")
+//    public ResponseEntity<ApiResponse> deleteProduct(@PathVariable("productId") Integer productId){
+//
+//        productService.deleteProduct(productId);
+//
+//        return new ResponseEntity<>(new ApiResponse(true, "Successfully deleted product "), HttpStatus.OK);
+//    }
 
 
 
