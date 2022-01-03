@@ -1,7 +1,5 @@
 package com.ecommerce.ecommerce.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -29,12 +27,6 @@ public class Wishlist {
         this.user = user;
         this.product = product;
         this.createdDate = createdDate;
-    }
-
-    public Wishlist(User user, Product product) {
-        this.user = user;
-        this.product = product;
-        this.createdDate = new Date();
     }
 
     public Wishlist() {
