@@ -3,10 +3,6 @@ package com.ecommerce.ecommerce.controller;
 import com.ecommerce.ecommerce.common.ApiResponse;
 import com.ecommerce.ecommerce.dto.cart.AddToCartDTO;
 import com.ecommerce.ecommerce.dto.cart.CartDTO;
-import com.ecommerce.ecommerce.dto.cart.CartItemsDTO;
-import com.ecommerce.ecommerce.exceptions.AuthenticationFailedException;
-import com.ecommerce.ecommerce.exceptions.ProductNotExistException;
-import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.model.User;
 import com.ecommerce.ecommerce.service.AuthenticationTokenService;
 import com.ecommerce.ecommerce.service.CartService;
@@ -59,23 +55,20 @@ public class CartController {
 
         cartService.deleteCartItem(cartItemId, user);
 
-        return new ResponseEntity<>(new ApiResponse(true, "deleted item from cart"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(true, "Successfully deleted item from cart"), HttpStatus.OK);
 
     }
 
     @PutMapping("/update/{cartItemId}")
     public ResponseEntity<ApiResponse> updateCartItem(@PathVariable("cartItemId") Integer cartItemId,
                                                       @RequestParam("token") String token, Integer quantity){
-
         authenticationTokenService.authenticate(token);
 
         User user = authenticationTokenService.getUser(token);
 
         cartService.updateCartItem(quantity, cartItemId, user);
 
-        return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Cart has been updated"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(true, "Cart has been Successfully updated"), HttpStatus.OK);
     }
-
-
 
 }

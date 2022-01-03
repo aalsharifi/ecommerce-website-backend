@@ -34,7 +34,7 @@ public class ProductController {
         }
 
         productService.createProduct(productDTO, optionalCategory.get());
-        return new ResponseEntity<>(new ApiResponse(true, "Product has been added!"), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ApiResponse(true, "Product has been successfully added!"), HttpStatus.CREATED);
     }
 
     @GetMapping("/list")
@@ -54,7 +54,7 @@ public class ProductController {
         }
 
         productService.updateProduct(productDTO, productId);
-        return new ResponseEntity<>(new ApiResponse(true, "Product has been updated!"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(true, "Product has been successfully updated!"), HttpStatus.OK);
     }
 
 //    @DeleteMapping("/delete/{productId}")

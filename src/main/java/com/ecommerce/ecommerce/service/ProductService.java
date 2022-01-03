@@ -5,10 +5,8 @@ import com.ecommerce.ecommerce.exceptions.CustomException;
 import com.ecommerce.ecommerce.exceptions.ProductNotExistException;
 import com.ecommerce.ecommerce.model.Category;
 import com.ecommerce.ecommerce.model.Product;
-import com.ecommerce.ecommerce.repository.CategoryRepo;
 import com.ecommerce.ecommerce.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,6 +33,7 @@ public class ProductService {
     }
 
     public ProductDTO getProductDTO(Product product){
+
         ProductDTO productDTO = new ProductDTO();
 
         productDTO.setDescription(product.getDescription());
@@ -49,7 +48,7 @@ public class ProductService {
 
     public List<ProductDTO> getAllProducts() {
         List<Product> allProducts = productRepo.findAll();
-        List<ProductDTO> productDTOList = new ArrayList<>();
+        List<com.ecommerce.ecommerce.dto.ProductDTO> productDTOList = new ArrayList<>();
 
         for(Product product : allProducts) {
             productDTOList.add(getProductDTO(product));
