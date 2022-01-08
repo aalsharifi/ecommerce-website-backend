@@ -48,7 +48,7 @@ public class ProductService {
 
     public List<ProductDTO> getAllProducts() {
         List<Product> allProducts = productRepo.findAll();
-        List<com.ecommerce.ecommerce.dto.ProductDTO> productDTOList = new ArrayList<>();
+        List<ProductDTO> productDTOList = new ArrayList<>();
 
         for(Product product : allProducts) {
             productDTOList.add(getProductDTO(product));
