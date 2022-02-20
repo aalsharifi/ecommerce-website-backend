@@ -36,16 +36,16 @@ public class CategoryService {
         return categoryRepo.findById(categoryId).isPresent();
     }
 
-    public void deleteCategory(Integer categoryId) {
-        Optional<Category> optionalCategory = categoryRepo.findById(categoryId);
-
-        if(optionalCategory.isEmpty()){
-            throw new CustomException("Invalid category id: " + categoryId);
-        }
-
-        Category category = optionalCategory.get();
-
-        categoryRepo.delete(category);
-    }
+//    public void deleteCategory(Integer categoryId) {
+//        Optional<Category> optionalCategory = categoryRepo.findById(categoryId);
+//
+//        if(optionalCategory.isEmpty()){
+//            throw new CustomException("Invalid category id: " + categoryId);
+//        }
+//
+//        Category category = optionalCategory.get();
+//
+//        categoryRepo.delete(category);
+//    }
 
 }
