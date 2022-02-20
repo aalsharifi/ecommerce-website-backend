@@ -1,8 +1,8 @@
 package com.ecommerce.ecommerce.model;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
@@ -20,6 +20,17 @@ public class Category {
     @Column(name = "imageURL")
     private @NotBlank String imageURL;
 
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    Set<Product> products;
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 
     public Integer getId() {
         return Id;
