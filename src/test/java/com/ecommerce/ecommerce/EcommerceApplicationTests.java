@@ -1,13 +1,63 @@
 package com.ecommerce.ecommerce;
 
+import com.ecommerce.ecommerce.model.Category;
+import com.ecommerce.ecommerce.model.Product;
+import com.ecommerce.ecommerce.model.User;
+import com.ecommerce.ecommerce.repository.CategoryRepo;
+import com.ecommerce.ecommerce.repository.UserRepo;
+import com.ecommerce.ecommerce.repository.WishlistRepo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 class EcommerceApplicationTests {
 
+	@Autowired
+	private UserRepo userRepo;
+
+	@Autowired
+	private CategoryRepo categoryRepo;
+
+	@Autowired
+	private WishlistRepo wishlistRepo;
+
+	private User user = new User("abdulazeez", "alsharifi", "qq@gmail.com", "root");
+	Category category = new Category("Men", "Shop men products", "image.jpg");
+
 	@Test
-	void contextLoads() {
+	public void saveUserTest(){
+		userRepo.save(user);
+		Assertions.assertNotNull(userRepo.findByEmail(user.getEmail()));
+		userRepo.deleteById(user.getId());
 	}
+
+	@Test
+	public void DeleteUserTest(){
+		userRepo.save(user);
+		userRepo.deleteById(user.getId());
+		assertThat(userRepo.findById(user.getId())).isEmpty();
+	}
+
+	@Test
+	public void saveCategoryTest(){
+		categoryRepo.save(category);
+		Assertions.assertNotNull(categoryRepo.getById(category.getId()));
+		categoryRepo.deleteById(category.getId());
+	}
+
+	@Test
+	public void DeleteCategoryTest(){
+		categoryRepo.save(category);
+		categoryRepo.deleteById(category.getId());
+		assertThat(categoryRepo.findById(category.getId())).isEmpty();
+	}
+
 
 }

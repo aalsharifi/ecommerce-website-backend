@@ -20,6 +20,15 @@ public class Category {
     @Column(name = "imageURL")
     private @NotBlank String imageURL;
 
+    public Category(String categoryName, String description, String imageURL) {
+        this.categoryName = categoryName;
+        this.description = description;
+        this.imageURL = imageURL;
+    }
+
+    public Category() {
+    }
+
     public Integer getId() {
         return Id;
     }
