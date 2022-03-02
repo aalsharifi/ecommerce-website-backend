@@ -8,6 +8,7 @@ import com.ecommerce.ecommerce.repository.AuthenticationTokenRepo;
 import com.ecommerce.ecommerce.repository.CategoryRepo;
 import com.ecommerce.ecommerce.repository.UserRepo;
 import com.ecommerce.ecommerce.repository.WishlistRepo;
+import com.ecommerce.ecommerce.service.AuthenticationTokenService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -64,12 +65,8 @@ class EcommerceApplicationTests {
 	}
 
 	@Test
-	public void saveTokenTest(){
-		userRepo.save(user);
-		authenticationTokenRepo.findByUser(user);
-		Assertions.assertNotNull(authenticationToken.getToken());
-		userRepo.deleteById(user.getId());
-
+	public void TokenTest(){
+		Assertions.assertNull(authenticationTokenRepo.findByToken(authenticationToken.getToken()));
 	}
 
 
