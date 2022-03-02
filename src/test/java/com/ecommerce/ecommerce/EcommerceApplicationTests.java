@@ -1,8 +1,10 @@
 package com.ecommerce.ecommerce;
 
+import com.ecommerce.ecommerce.model.AuthenticationToken;
 import com.ecommerce.ecommerce.model.Category;
 import com.ecommerce.ecommerce.model.Product;
 import com.ecommerce.ecommerce.model.User;
+import com.ecommerce.ecommerce.repository.AuthenticationTokenRepo;
 import com.ecommerce.ecommerce.repository.CategoryRepo;
 import com.ecommerce.ecommerce.repository.UserRepo;
 import com.ecommerce.ecommerce.repository.WishlistRepo;
@@ -26,10 +28,12 @@ class EcommerceApplicationTests {
 	private CategoryRepo categoryRepo;
 
 	@Autowired
-	private WishlistRepo wishlistRepo;
+	AuthenticationTokenRepo authenticationTokenRepo;
 
 	private User user = new User("abdulazeez", "alsharifi", "qq@gmail.com", "root");
-	Category category = new Category("Men", "Shop men products", "image.jpg");
+	private Category category = new Category("Men", "Shop men products", "image.jpg");
+	private AuthenticationToken authenticationToken = new AuthenticationToken(user);
+
 
 	@Test
 	public void saveUserTest(){
@@ -57,6 +61,15 @@ class EcommerceApplicationTests {
 		categoryRepo.save(category);
 		categoryRepo.deleteById(category.getId());
 		assertThat(categoryRepo.findById(category.getId())).isEmpty();
+	}
+
+	@Test
+	public void saveTokenTest(){
+		userRepo.save(user);
+		authenticationTokenRepo.findByUser(user);
+		Assertions.assertNotNull(authenticationToken.getToken());
+		userRepo.deleteById(user.getId());
+
 	}
 
 
